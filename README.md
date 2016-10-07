@@ -22,9 +22,8 @@ logging through an application managed logger. It does so by allowing the gem
 authors to optionally receive a application managed Logger instance via
 dependency injection and handles the optionality of the logger. This frees the
 gem authors up from having to worry about checking for the existence of the
-logger each time they want to log something. It also limits the access to the
-logger to non-management methods so that the gem authors don't accidentally
-alter the configuraiton of an application logger.
+logger each time they want to log something. It also protects you from
+accidentally altering the applications logger.
 
 ## Installation
 
