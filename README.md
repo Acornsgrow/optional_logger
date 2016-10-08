@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Acornsgrow/optional_logger.svg?branch=master)](https://travis-ci.org/Acornsgrow/optional_logger)
+
 # OptionalLogger
 
 Easily support application loggers in your gems.
