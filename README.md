@@ -2,6 +2,11 @@
 
 Easily support application loggers in your gems.
 
+**Note:** At the moment the following is what is under HEAVY development. The
+Usage is currently written based on the planned usage. I will remove this notice
+and udpate the Usage documentation once we have finalized the API and release
+v1.0.0.
+
 ## Why?
 
 OptionalLogger was built out of the need to be able to easily support logging
@@ -46,10 +51,6 @@ receives an application managed Logger instance via dependency injection.
 OptionalLogger does NOT prescribe how you receive the logger. Therefore, the
 following examples will refer to the received application managed logger
 instance as `received_logger`.
-
-**Note:** At the moment the following is what is planned. Once some of it is
-implemented I will move the rest of these out into issues and leave just the
-implemented pieces here.
 
 ```ruby
 require 'optional_logger'
