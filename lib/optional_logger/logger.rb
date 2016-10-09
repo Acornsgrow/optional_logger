@@ -7,5 +7,6 @@ module OptionalLogger
     def add(severity, message = nil, progname = nil, &block)
       @logger.add(severity, message, progname, &block) if @logger
     end
+    alias log add
   end
 end

@@ -13,4 +13,13 @@ describe OptionalLogger do
     log_content.rewind
     expect(log_content.read).to match(/INFO -- my prog: my message$/)
   end
+
+  it 'add log message to log' do
+    log_content = StringIO.new
+    logger = Logger.new(log_content)
+    optional_logger = OptionalLogger::Logger.new(logger)
+    optional_logger.log(Logger::INFO, 'my message', 'my prog')
+    log_content.rewind
+    expect(log_content.read).to match(/INFO -- my prog: my message$/)
+  end
 end
