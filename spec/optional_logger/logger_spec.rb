@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe OptionalLogger::Logger do
-  describe '#new' do
+  describe '.new' do
     subject { described_class }
 
     it 'constructs an instance of the optional logger' do
