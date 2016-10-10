@@ -26,7 +26,7 @@ RSpec.describe OptionalLogger::Logger do
       end
     end
 
-    context 'when the optional laggor was constructed with a nil' do
+    context 'when the optional logger was constructed with a nil' do
       let(:logger) { nil }
       subject { described_class.new(logger) }
 
