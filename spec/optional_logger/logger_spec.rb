@@ -99,4 +99,36 @@ RSpec.describe OptionalLogger::Logger do
       end
     end
   end
+
+  describe '#warn' do
+    let(:logger) { double('logger') }
+    subject { described_class.new(logger) }
+
+    context 'when give a message' do
+      it 'logs the message as an warn level message via #add' do
+        message = 'my test message'
+        expect(subject).to receive(:add).with(::Logger::WARN, nil, message)
+        subject.warn(message)
+      end
+    end
+
+    context 'when given a block' do
+      it 'logs the yielded value from the block with a nil progname' do
+        message = 'my block test message'
+        block = Proc.new { message }
+        expect(subject).to receive(:add).with(::Logger::WARN, nil, nil, &block)
+        subject.warn(&block)
+      end
+    end
+
+    context 'when given a block and progname' do
+      it 'logs the yielded value from the block with the progname' do
+        message = 'my block test message'
+        progname = 'my progname'
+        block = Proc.new { message }
+        expect(subject).to receive(:add).with(::Logger::WARN, nil, progname, &block)
+        subject.warn(progname, &block)
+      end
+    end
+  end
 end
