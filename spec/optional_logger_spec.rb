@@ -66,127 +66,168 @@ describe OptionalLogger do
         expect(log_content.read).to match(/INFO -- : my message$/)
       end
     end
+  end
 
-    describe '#warn' do
-      context 'when given a block' do
-        context 'when given progname' do
-          it 'logs an warn severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.warn('my progname', &block)
-            log_content.rewind
-            expect(log_content.read).to match(/WARN -- my progname: my test message$/)
-          end
-        end
-
-        context 'when NOT given progname' do
-          it 'logs an warn severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.warn(&block)
-            log_content.rewind
-            expect(log_content.read).to match(/WARN -- : my test message$/)
-          end
-        end
-      end
-
-      context 'when not given a block' do
+  describe '#warn' do
+    context 'when given a block' do
+      context 'when given progname' do
         it 'logs an warn severity level message' do
           log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
           logger = ::Logger.new(log_content)
           optional_logger = OptionalLogger::Logger.new(logger)
-          optional_logger.warn('my message')
+          optional_logger.warn('my progname', &block)
           log_content.rewind
-          expect(log_content.read).to match(/WARN -- : my message$/)
+          expect(log_content.read).to match(/WARN -- my progname: my test message$/)
+        end
+      end
+
+      context 'when NOT given progname' do
+        it 'logs an warn severity level message' do
+          log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.warn(&block)
+          log_content.rewind
+          expect(log_content.read).to match(/WARN -- : my test message$/)
         end
       end
     end
 
-    describe '#debug' do
-      context 'when given a block' do
-        context 'when given progname' do
-          it 'logs an debug severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.debug('my progname', &block)
-            log_content.rewind
-            expect(log_content.read).to match(/DEBUG -- my progname: my test message$/)
-          end
-        end
-
-        context 'when NOT given progname' do
-          it 'logs an debug severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.debug(&block)
-            log_content.rewind
-            expect(log_content.read).to match(/DEBUG -- : my test message$/)
-          end
-        end
+    context 'when not given a block' do
+      it 'logs an warn severity level message' do
+        log_content = StringIO.new
+        logger = ::Logger.new(log_content)
+        optional_logger = OptionalLogger::Logger.new(logger)
+        optional_logger.warn('my message')
+        log_content.rewind
+        expect(log_content.read).to match(/WARN -- : my message$/)
       end
+    end
+  end
 
-      context 'when not given a block' do
+  describe '#debug' do
+    context 'when given a block' do
+      context 'when given progname' do
         it 'logs an debug severity level message' do
           log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
           logger = ::Logger.new(log_content)
           optional_logger = OptionalLogger::Logger.new(logger)
-          optional_logger.debug('my message')
+          optional_logger.debug('my progname', &block)
           log_content.rewind
-          expect(log_content.read).to match(/DEBUG -- : my message$/)
+          expect(log_content.read).to match(/DEBUG -- my progname: my test message$/)
+        end
+      end
+
+      context 'when NOT given progname' do
+        it 'logs an debug severity level message' do
+          log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.debug(&block)
+          log_content.rewind
+          expect(log_content.read).to match(/DEBUG -- : my test message$/)
         end
       end
     end
 
-    describe '#error' do
-      context 'when given a block' do
-        context 'when given progname' do
-          it 'logs an error severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.error('my progname', &block)
-            log_content.rewind
-            expect(log_content.read).to match(/ERROR -- my progname: my test message$/)
-          end
-        end
+    context 'when not given a block' do
+      it 'logs an debug severity level message' do
+        log_content = StringIO.new
+        logger = ::Logger.new(log_content)
+        optional_logger = OptionalLogger::Logger.new(logger)
+        optional_logger.debug('my message')
+        log_content.rewind
+        expect(log_content.read).to match(/DEBUG -- : my message$/)
+      end
+    end
+  end
 
-        context 'when NOT given progname' do
-          it 'logs an error severity level message' do
-            log_content = StringIO.new
-            message = 'my test message'
-            block = Proc.new { message }
-            logger = ::Logger.new(log_content)
-            optional_logger = OptionalLogger::Logger.new(logger)
-            optional_logger.error(&block)
-            log_content.rewind
-            expect(log_content.read).to match(/ERROR -- : my test message$/)
-          end
+  describe '#error' do
+    context 'when given a block' do
+      context 'when given progname' do
+        it 'logs an error severity level message' do
+          log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.error('my progname', &block)
+          log_content.rewind
+          expect(log_content.read).to match(/ERROR -- my progname: my test message$/)
         end
       end
 
-      context 'when not given a block' do
+      context 'when NOT given progname' do
         it 'logs an error severity level message' do
           log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
           logger = ::Logger.new(log_content)
           optional_logger = OptionalLogger::Logger.new(logger)
-          optional_logger.error('my message')
+          optional_logger.error(&block)
           log_content.rewind
-          expect(log_content.read).to match(/ERROR -- : my message$/)
+          expect(log_content.read).to match(/ERROR -- : my test message$/)
         end
+      end
+    end
+
+    context 'when not given a block' do
+      it 'logs an error severity level message' do
+        log_content = StringIO.new
+        logger = ::Logger.new(log_content)
+        optional_logger = OptionalLogger::Logger.new(logger)
+        optional_logger.error('my message')
+        log_content.rewind
+        expect(log_content.read).to match(/ERROR -- : my message$/)
+      end
+    end
+  end
+
+  describe '#fatal' do
+    context 'when given a block' do
+      context 'when given progname' do
+        it 'logs an fatal severity level message' do
+          log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.fatal('my progname', &block)
+          log_content.rewind
+          expect(log_content.read).to match(/FATAL -- my progname: my test message$/)
+        end
+      end
+
+      context 'when NOT given progname' do
+        it 'logs an fatal severity level message' do
+          log_content = StringIO.new
+          message = 'my test message'
+          block = Proc.new { message }
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.fatal(&block)
+          log_content.rewind
+          expect(log_content.read).to match(/FATAL -- : my test message$/)
+        end
+      end
+    end
+
+    context 'when not given a block' do
+      it 'logs an fatal severity level message' do
+        log_content = StringIO.new
+        logger = ::Logger.new(log_content)
+        optional_logger = OptionalLogger::Logger.new(logger)
+        optional_logger.fatal('my message')
+        log_content.rewind
+        expect(log_content.read).to match(/FATAL -- : my message$/)
       end
     end
   end

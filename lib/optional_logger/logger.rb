@@ -26,5 +26,9 @@ module OptionalLogger
     def error(progname_or_message = nil, &block)
       add(::Logger::ERROR, nil, progname_or_message, &block)
     end
+
+    def fatal(progname_or_message = nil, &block)
+      add(::Logger::FATAL, nil, progname_or_message, &block)
+    end
   end
 end
