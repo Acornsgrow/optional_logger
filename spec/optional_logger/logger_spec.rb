@@ -56,14 +56,13 @@ RSpec.describe OptionalLogger::Logger do
     context 'when logger is NOT present' do
       subject { described_class.new(nil) }
 
-      it 'does NOT proxy #add to the logger #add' do
+      it 'does NOT proxy #add to the logger #add and therefore does not blow up' do
         severity = double('severity')
         message = double('message')
         progname = double('progname')
         block = Proc.new {}
 
-        expect(subject.instance_variable_get(:@logger)).not_to receive(:add)
-        subject.add(severity, message, progname, &block)
+        expect { subject.add(severity, message, progname, &block) }.not_to raise_error
       end
     end
   end
