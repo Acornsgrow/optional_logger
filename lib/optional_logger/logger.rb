@@ -53,5 +53,10 @@ module OptionalLogger
       return @logger.debug? if @logger
       false
     end
+
+    def fatal?
+      return @logger.fatal? if @logger
+      false
+    end
   end
 end
