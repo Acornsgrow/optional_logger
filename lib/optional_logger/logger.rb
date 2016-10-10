@@ -1,3 +1,5 @@
+require 'logger'
+
 module OptionalLogger
   class Logger
     def initialize(logger)
@@ -8,5 +10,9 @@ module OptionalLogger
       @logger.add(severity, message, progname, &block) if @logger
     end
     alias log add
+
+    def info(progname_or_message = nil, &block)
+      add(::Logger::INFO, nil, progname_or_message, &block)
+    end
   end
 end
