@@ -38,5 +38,10 @@ module OptionalLogger
     def unknown(progname_or_message = nil, &block)
       add(::Logger::UNKNOWN, nil, progname_or_message, &block)
     end
+
+    def info?
+      return @logger.info? if @logger
+      return false
+    end
   end
 end
