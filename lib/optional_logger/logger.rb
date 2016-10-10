@@ -18,5 +18,9 @@ module OptionalLogger
     def warn(progname_or_message = nil, &block)
       add(::Logger::WARN, nil, progname_or_message, &block)
     end
+
+    def debug(progname_or_message = nil, &block)
+      add(::Logger::DEBUG, nil, progname_or_message, &block)
+    end
   end
 end

@@ -107,5 +107,46 @@ describe OptionalLogger do
         end
       end
     end
+
+    describe '#debug' do
+      context 'when given a block' do
+        context 'when given progname' do
+          it 'logs an debug severity level message' do
+            log_content = StringIO.new
+            message = 'my test message'
+            block = Proc.new { message }
+            logger = ::Logger.new(log_content)
+            optional_logger = OptionalLogger::Logger.new(logger)
+            optional_logger.debug('my progname', &block)
+            log_content.rewind
+            expect(log_content.read).to match(/DEBUG -- my progname: my test message$/)
+          end
+        end
+
+        context 'when NOT given progname' do
+          it 'logs an debug severity level message' do
+            log_content = StringIO.new
+            message = 'my test message'
+            block = Proc.new { message }
+            logger = ::Logger.new(log_content)
+            optional_logger = OptionalLogger::Logger.new(logger)
+            optional_logger.debug(&block)
+            log_content.rewind
+            expect(log_content.read).to match(/DEBUG -- : my test message$/)
+          end
+        end
+      end
+
+      context 'when not given a block' do
+        it 'logs an debug severity level message' do
+          log_content = StringIO.new
+          logger = ::Logger.new(log_content)
+          optional_logger = OptionalLogger::Logger.new(logger)
+          optional_logger.debug('my message')
+          log_content.rewind
+          expect(log_content.read).to match(/DEBUG -- : my message$/)
+        end
+      end
+    end
   end
 end
