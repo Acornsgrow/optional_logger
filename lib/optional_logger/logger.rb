@@ -48,5 +48,10 @@ module OptionalLogger
       return @logger.warn? if @logger
       false
     end
+
+    def debug?
+      return @logger.debug? if @logger
+      false
+    end
   end
 end

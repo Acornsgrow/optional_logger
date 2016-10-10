@@ -202,4 +202,26 @@ RSpec.describe OptionalLogger::Logger do
       end
     end
   end
+
+  describe '#debug?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #debug? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:debug?).and_return(rv)
+        expect(subject.debug?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.debug?).to eq(false)
+      end
+    end
+  end
 end

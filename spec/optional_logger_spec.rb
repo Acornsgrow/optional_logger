@@ -448,4 +448,37 @@ describe OptionalLogger do
       end
     end
   end
+
+  describe '#debug?' do
+    context 'when logger present' do
+      context 'when current severity level allows for debug messages' do
+        it 'returns true' do
+          log_content = StringIO.new
+          logger = ::Logger.new(log_content)
+          logger.level = ::Logger::DEBUG
+          optional_logger = OptionalLogger::Logger.new(logger)
+
+          expect(optional_logger.debug?).to eq(true)
+        end
+      end
+
+      context 'when the current severity does not allow for debug messages' do
+        it 'returns false' do
+          log_content = StringIO.new
+          logger = ::Logger.new(log_content)
+          logger.level = ::Logger::UNKNOWN
+          optional_logger = OptionalLogger::Logger.new(logger)
+
+          expect(optional_logger.debug?).to eq(false)
+        end
+      end
+    end
+
+    context 'when logger NOT present' do
+      it 'returns false' do
+        optional_logger = OptionalLogger::Logger.new(nil)
+        expect(optional_logger.debug?).to eq(false)
+      end
+    end
+  end
 end
