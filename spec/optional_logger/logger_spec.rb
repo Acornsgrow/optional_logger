@@ -72,31 +72,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an info level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::INFO, nil, message)
-        subject.info(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::INFO, nil, nil, &block)
-        subject.info(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::INFO, nil, progname, &block)
-        subject.info(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::INFO, nil, message, &block)
+      subject.info(message, &block)
     end
   end
 
@@ -104,31 +84,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an warn level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::WARN, nil, message)
-        subject.warn(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::WARN, nil, nil, &block)
-        subject.warn(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::WARN, nil, progname, &block)
-        subject.warn(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::WARN, nil, message, &block)
+      subject.warn(message, &block)
     end
   end
 
@@ -136,31 +96,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an debug level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::DEBUG, nil, message)
-        subject.debug(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::DEBUG, nil, nil, &block)
-        subject.debug(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::DEBUG, nil, progname, &block)
-        subject.debug(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::DEBUG, nil, message, &block)
+      subject.debug(message, &block)
     end
   end
 
@@ -168,31 +108,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an error level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::ERROR, nil, message)
-        subject.error(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::ERROR, nil, nil, &block)
-        subject.error(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::ERROR, nil, progname, &block)
-        subject.error(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::ERROR, nil, message, &block)
+      subject.error(message, &block)
     end
   end
 
@@ -200,31 +120,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an fatal level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::FATAL, nil, message)
-        subject.fatal(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::FATAL, nil, nil, &block)
-        subject.fatal(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::FATAL, nil, progname, &block)
-        subject.fatal(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::FATAL, nil, message, &block)
+      subject.fatal(message, &block)
     end
   end
 
@@ -232,31 +132,11 @@ RSpec.describe OptionalLogger::Logger do
     let(:logger) { double('logger') }
     subject { described_class.new(logger) }
 
-    context 'when give a message' do
-      it 'logs the message as an unknown level message via #add' do
-        message = 'my test message'
-        expect(subject).to receive(:add).with(::Logger::UNKNOWN, nil, message)
-        subject.unknown(message)
-      end
-    end
-
-    context 'when given a block' do
-      it 'logs the yielded value from the block with a nil progname' do
-        message = 'my block test message'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::UNKNOWN, nil, nil, &block)
-        subject.unknown(&block)
-      end
-    end
-
-    context 'when given a block and progname' do
-      it 'logs the yielded value from the block with the progname' do
-        message = 'my block test message'
-        progname = 'my progname'
-        block = Proc.new { message }
-        expect(subject).to receive(:add).with(::Logger::UNKNOWN, nil, progname, &block)
-        subject.unknown(progname, &block)
-      end
+    it 'calls the add method appropriately' do
+      message = 'my test message'
+      block = Proc.new { }
+      expect(subject).to receive(:add).with(::Logger::UNKNOWN, nil, message, &block)
+      subject.unknown(message, &block)
     end
   end
 end
