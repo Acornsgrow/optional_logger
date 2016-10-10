@@ -246,4 +246,26 @@ RSpec.describe OptionalLogger::Logger do
       end
     end
   end
+
+  describe '#error?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #error? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:error?).and_return(rv)
+        expect(subject.error?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.error?).to eq(false)
+      end
+    end
+  end
 end
