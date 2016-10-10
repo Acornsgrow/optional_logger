@@ -41,7 +41,12 @@ module OptionalLogger
 
     def info?
       return @logger.info? if @logger
-      return false
+      false
+    end
+
+    def warn?
+      return @logger.warn? if @logger
+      false
     end
   end
 end

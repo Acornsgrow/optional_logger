@@ -415,4 +415,37 @@ describe OptionalLogger do
       end
     end
   end
+
+  describe '#warn?' do
+    context 'when logger present' do
+      context 'when current severity level allows for warn messages' do
+        it 'returns true' do
+          log_content = StringIO.new
+          logger = ::Logger.new(log_content)
+          logger.level = ::Logger::INFO
+          optional_logger = OptionalLogger::Logger.new(logger)
+
+          expect(optional_logger.warn?).to eq(true)
+        end
+      end
+
+      context 'when the current severity does not allow for warn messages' do
+        it 'returns false' do
+          log_content = StringIO.new
+          logger = ::Logger.new(log_content)
+          logger.level = ::Logger::UNKNOWN
+          optional_logger = OptionalLogger::Logger.new(logger)
+
+          expect(optional_logger.warn?).to eq(false)
+        end
+      end
+    end
+
+    context 'when logger NOT present' do
+      it 'returns false' do
+        optional_logger = OptionalLogger::Logger.new(nil)
+        expect(optional_logger.warn?).to eq(false)
+      end
+    end
+  end
 end
