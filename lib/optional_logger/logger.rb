@@ -6,6 +6,10 @@ module OptionalLogger
       @logger = logger
     end
 
+    def wrapped_logger
+      @logger
+    end
+
     def add(severity, message = nil, progname = nil, &block)
       @logger.add(severity, message, progname, &block) if @logger
     end

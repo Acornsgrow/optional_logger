@@ -5,6 +5,24 @@ describe OptionalLogger do
     expect(OptionalLogger::VERSION).not_to be nil
   end
 
+  describe '.new' do
+    it 'constructs a new OptionalLogger::Logger instance' do
+      log_content = StringIO.new
+      logger = ::Logger.new(log_content)
+      optional_logger = OptionalLogger::Logger.new(logger)
+      expect(optional_logger).to be_a(OptionalLogger::Logger)
+    end
+  end
+
+  describe '#wrapped_logger' do
+    it 'returns the logger it was constructed with' do
+      log_content = StringIO.new
+      logger = ::Logger.new(log_content)
+      optional_logger = OptionalLogger::Logger.new(logger)
+      expect(optional_logger.wrapped_logger).to eq(logger)
+    end
+  end
+
   describe '#add' do
     context 'when given message' do
       context 'when given progname' do

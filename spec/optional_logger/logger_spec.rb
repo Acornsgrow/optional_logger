@@ -16,6 +16,26 @@ RSpec.describe OptionalLogger::Logger do
     end
   end
 
+  describe '#wrapped_logger' do
+    context 'when the optional logger was constructed with a logger' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'returns the logger it was constructed with' do
+        expect(subject.wrapped_logger).to eq(logger)
+      end
+    end
+
+    context 'when the optional laggor was constructed with a nil' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns nil' do
+        expect(subject.wrapped_logger).to be_nil
+      end
+    end
+  end
+
   describe '#add' do
     context 'when logger is present' do
       let(:logger) { double('logger') }
