@@ -163,4 +163,36 @@ RSpec.describe OptionalLogger::Logger do
       end
     end
   end
+
+  describe '#error' do
+    let(:logger) { double('logger') }
+    subject { described_class.new(logger) }
+
+    context 'when give a message' do
+      it 'logs the message as an error level message via #add' do
+        message = 'my test message'
+        expect(subject).to receive(:add).with(::Logger::ERROR, nil, message)
+        subject.error(message)
+      end
+    end
+
+    context 'when given a block' do
+      it 'logs the yielded value from the block with a nil progname' do
+        message = 'my block test message'
+        block = Proc.new { message }
+        expect(subject).to receive(:add).with(::Logger::ERROR, nil, nil, &block)
+        subject.error(&block)
+      end
+    end
+
+    context 'when given a block and progname' do
+      it 'logs the yielded value from the block with the progname' do
+        message = 'my block test message'
+        progname = 'my progname'
+        block = Proc.new { message }
+        expect(subject).to receive(:add).with(::Logger::ERROR, nil, progname, &block)
+        subject.error(progname, &block)
+      end
+    end
+  end
 end

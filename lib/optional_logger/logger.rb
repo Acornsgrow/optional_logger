@@ -22,5 +22,9 @@ module OptionalLogger
     def debug(progname_or_message = nil, &block)
       add(::Logger::DEBUG, nil, progname_or_message, &block)
     end
+
+    def error(progname_or_message = nil, &block)
+      add(::Logger::ERROR, nil, progname_or_message, &block)
+    end
   end
 end
