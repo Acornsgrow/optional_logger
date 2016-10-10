@@ -30,5 +30,9 @@ module OptionalLogger
     def fatal(progname_or_message = nil, &block)
       add(::Logger::FATAL, nil, progname_or_message, &block)
     end
+
+    def unknown(progname_or_message = nil, &block)
+      add(::Logger::UNKNOWN, nil, progname_or_message, &block)
+    end
   end
 end
