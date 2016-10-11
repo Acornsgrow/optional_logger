@@ -158,4 +158,114 @@ RSpec.describe OptionalLogger::Logger do
       subject.unknown(message, &block)
     end
   end
+
+  describe '#info?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #info? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:info?).and_return(rv)
+        expect(subject.info?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.info?).to eq(false)
+      end
+    end
+  end
+
+  describe '#warn?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #warn? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:warn?).and_return(rv)
+        expect(subject.warn?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.warn?).to eq(false)
+      end
+    end
+  end
+
+  describe '#debug?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #debug? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:debug?).and_return(rv)
+        expect(subject.debug?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.debug?).to eq(false)
+      end
+    end
+  end
+
+  describe '#fatal?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #fatal? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:fatal?).and_return(rv)
+        expect(subject.fatal?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.fatal?).to eq(false)
+      end
+    end
+  end
+
+  describe '#error?' do
+    context 'when logger present' do
+      let(:logger) { double('logger') }
+      subject { described_class.new(logger) }
+
+      it 'delegates to the #error? method on the logger' do
+        rv = double('return value')
+        allow(logger).to receive(:error?).and_return(rv)
+        expect(subject.error?).to eq(rv)
+      end
+    end
+
+    context 'when logger NOT present' do
+      let(:logger) { nil }
+      subject { described_class.new(logger) }
+
+      it 'returns false' do
+        expect(subject.error?).to eq(false)
+      end
+    end
+  end
 end
