@@ -60,7 +60,7 @@ instance as `received_logger`.
 ```ruby
 require 'optional_logger'
 
-logger = OptionalLogger.new(received_logger)
+logger = OptionalLogger::Logger.new(received_logger)
 
 logger.info("some info log message")
 logger.info("Program Name") { "some expensive info log message" }
