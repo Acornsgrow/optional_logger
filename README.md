@@ -2,6 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/gpa.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger)
 [![Test Coverage](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/coverage.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger/coverage)
 [![Issue Count](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/issue_count.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger)
+[![Inline docs](http://inch-ci.org/github/Acornsgrow/optional_logger.svg?branch=master)](http://inch-ci.org/github/Acornsgrow/optional_logger)
 
 # OptionalLogger
 
