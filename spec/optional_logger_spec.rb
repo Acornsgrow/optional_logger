@@ -422,7 +422,7 @@ describe OptionalLogger do
         it 'returns true' do
           log_content = StringIO.new
           logger = ::Logger.new(log_content)
-          logger.level = ::Logger::INFO
+          logger.level = ::Logger::WARN
           optional_logger = OptionalLogger::Logger.new(logger)
 
           expect(optional_logger.warn?).to eq(true)
