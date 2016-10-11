@@ -2,15 +2,11 @@
 [![Code Climate](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/gpa.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger)
 [![Test Coverage](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/coverage.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger/coverage)
 [![Issue Count](https://codeclimate.com/github/Acornsgrow/optional_logger/badges/issue_count.svg)](https://codeclimate.com/github/Acornsgrow/optional_logger)
+[![Inline docs](http://inch-ci.org/github/Acornsgrow/optional_logger.svg?branch=master)](http://inch-ci.org/github/Acornsgrow/optional_logger)
 
 # OptionalLogger
 
 Easily support application loggers in your gems.
-
-**Note:** At the moment the following is what is under HEAVY development. The
-Usage is currently written based on the planned usage. I will remove this notice
-and udpate the Usage documentation once we have finalized the API and release
-v1.0.0.
 
 ## Why?
 
