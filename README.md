@@ -8,11 +8,6 @@
 
 Easily support application loggers in your gems.
 
-**Note:** At the moment the following is what is under HEAVY development. The
-Usage is currently written based on the planned usage. I will remove this notice
-and udpate the Usage documentation once we have finalized the API and release
-v1.0.0.
-
 ## Why?
 
 OptionalLogger was built out of the need to be able to easily support logging
