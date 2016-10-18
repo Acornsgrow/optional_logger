@@ -5,7 +5,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
     context 'when given a logger' do
       context 'when the logger has NOT previously been set' do
         it 'wraps given logger in an optional logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
@@ -15,7 +15,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
         end
 
         it 'stores the optional logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
@@ -30,7 +30,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
 
       context 'when the logger HAS previously been set' do
         it 'wraps given logger in an optional logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
@@ -42,7 +42,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
         end
 
         it 'stores the optional logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
@@ -61,7 +61,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
     context 'when not given a logger' do
       context 'when the logger has previously been set' do
         it 'returns the optional logger containing the previously set logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
@@ -74,7 +74,7 @@ RSpec.describe OptionalLogger::LoggerManagement do
 
       context 'when it has NOT previously been set' do
         it 'returns the optional logger' do
-          klass = Class.new do
+          klass = Module.new do
             include OptionalLogger::LoggerManagement
           end
 
