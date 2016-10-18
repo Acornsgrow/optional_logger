@@ -8,12 +8,8 @@ module OptionalLogger
 
     module ClassMethods
       def logger(logger = nil)
-        if logger.nil?
-          @logger = OptionalLogger::Logger.new(nil) if @logger.nil?
-        else
-          @logger = OptionalLogger::Logger.new(logger)
-        end
-        return @logger
+        return @logger if @logger && logger.nil?
+        @logger = OptionalLogger::Logger.new(logger)
       end
     end
   end
