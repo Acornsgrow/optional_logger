@@ -91,6 +91,34 @@ logger.log(Logger::FATAL, "some message", "Program Name")
 **Note:** You don't have to worry about setting up or cleaning up after the
 logger as it is managed by the application that is using your library.
 
+### Logger Management
+
+We also provide a small module to aid with logger management within your gem if
+you don't want to write your own logger management using the core logger
+provided above. The following is an example of how might use it if you had a gem
+called `my_foo_gem`.
+
+```ruby
+require 'optional_logger'
+
+module MyFooGem
+  include OptionalLogger::LoggerManagement
+end
+```
+
+The above would enable consumers of your library to set the logger as follows.
+
+```ruby
+MyFooGem.logger(some_application_logger)
+```
+
+It also enables you to access an `OptionalLogger::Logger` instance that wraps
+the application logger they provided within your gem as follows.
+
+```ruby
+MyFooGem.logger # => the optional logger wrapping some_application_logger
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
