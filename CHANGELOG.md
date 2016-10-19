@@ -6,6 +6,8 @@ versions, as well as provide a rough history.
 
 #### Next Release
 
+* Added logger management module
+
 #### v1.0.0
 
 * Added documentation around all the classes, modules, constants and methods
