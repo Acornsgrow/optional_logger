@@ -36,7 +36,7 @@ accidentally altering the applications logger.
 Add this line to your gem's gemspec file:
 
 ```ruby
-spec.add_dependency 'optional_logger', '~> 1.0'
+spec.add_dependency 'optional_logger', '~> 1.1'
 ```
 
 Or install it yourself as:
