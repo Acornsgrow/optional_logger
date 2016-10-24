@@ -95,14 +95,18 @@ logger as it is managed by the application that is using your library.
 
 We also provide a small module to aid with logger management within your gem if
 you don't want to write your own logger management using the core logger
-provided above. The following is an example of how might use it if you had a gem
-called `my_foo_gem`.
+provided above. The following are a couple examples of how you might use it.
+
+#### Module/Class Level
+
+If you want to provide the logger interface at a Module/Class level. You would
+do the following.
 
 ```ruby
 require 'optional_logger'
 
 module MyFooGem
-  include OptionalLogger::LoggerManagement
+  extend OptionalLogger::LoggerManagement
 end
 ```
 
@@ -117,6 +121,41 @@ the application logger they provided within your gem as follows.
 
 ```ruby
 MyFooGem.logger # => the optional logger wrapping some_application_logger
+
+# or if you are inside the module
+
+self.logger # or simply logger
+```
+
+#### Instance Level
+
+If you want to provide the logger interface at an instance level. You would do
+the following.
+
+```ruby
+require 'optional_logger'
+
+module MyClass
+  include OptionalLogger::LoggerManagement
+end
+```
+
+The above would enable consumers of your library to set the logger as follows.
+
+```ruby
+obj = MyClass.new
+obj.logger(some_application_logger)
+```
+
+It also enables you to access an `OptionalLogger::Logger` instance that wraps
+the application logger they provided within your gem as follows.
+
+```ruby
+obj.logger # => the optional logger wrapping some_application_logger
+
+# or if you are inside the class
+
+self.logger # or simply logger
 ```
 
 ## Development
