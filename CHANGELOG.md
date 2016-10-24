@@ -6,6 +6,8 @@ versions, as well as provide a rough history.
 
 #### Next Release
 
+* Changed logger management to work at class or instance level
+
 #### v1.1.0
 
 * Added logger management module
